@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuu.mygym.dao.CoachDao">
+    <resultMap id="coach" type="Coach">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="gender" column="gender"/>
+        <result property="experience" column="experience"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="coach">
+        select * from `coach`;
+    </select>
+
+    <select id="queryById" resultMap="coach">
+        select * from `coach` where `id` = #{id};
+    </select>
+
+    <insert id="addCoach" parameterType="Coach">
+        insert into `coach`(`name`, `gender`, `experience`) values(#{name}, #{gender}, #{experience});
+    </insert>
+
+    <update id="updateCoach" parameterType="Coach">
+        update `coach` set `name` = #{name}, `gender` = #{gender}, `experience` = #{experience}, `update_time` = now() where `id` = #{id};
+    </update>
+
+    <delete id="delete">
+        delete from `coach` where `id` = #{id};
+    </delete>
+</mapper>

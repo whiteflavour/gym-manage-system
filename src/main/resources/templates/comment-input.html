@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments :: head(~{::title})">
+    <title>评论</title>
+</head>
+
+<body class="comment-bg">
+
+<!--导航-->
+<nav  th:replace="_fragments :: menu(4)"></nav>
+
+<!--中间内容-->
+<div  class="m-container m-padded-tb-big">
+    <div class="ui container">
+        <form action="#" th:object="${comment}" th:action="@{/comment}" method="post" class="ui form">
+            <input type="hidden" name="id" th:field="*{id}">
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">内容</label>
+                    <!--
+                        这里使用 th:field 来绑定属性，而不能使用 th:value，
+                        因为 value 是绑定的单个数据，而 field 才是绑定的对象的属性，
+                        原作者用错了，害得我直接找了一下午 bug。。。。
+                    -->
+                    <input type="text" name="content" placeholder="评论内容" th:field="*{content}">
+                </div>
+            </div>
+
+
+            <div class="ui error message"></div> <!--显示错误信息-->
+
+            <div class="ui negative message" th:unless="${#strings.isEmpty(msg)}">
+                <i class="close icon"></i>
+                <div class="header">验证失败：</div>
+                <p th:text="${msg}">对不起，操作失败！</p>
+            </div>
+
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)" >返回</button>
+                <button type="button" id="save-btn" class="ui secondary submit button">提交</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+
+<script>
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+        on : 'hover'
+    });
+
+    $('.ui.form').form({
+        fields : {
+            content : {
+                identifier: 'content',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入评论内容'
+                }]
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>

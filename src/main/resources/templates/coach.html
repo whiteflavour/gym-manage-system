@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments :: head(~{::title})">
+    <title>健身教练</title>
+</head>
+
+<body class="coach-bg">
+
+<!--导航-->
+<nav  th:replace="_fragments :: menu(2)"></nav>
+
+<!--中间内容-->
+<div  class="m-container-small m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+        <!--header-->
+        <div class="ui top attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui violet header">私人教练</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#lists.size(coaches)}"> 4 </h2> 个
+                </div>
+            </div>
+        </div>
+
+        <div class="ui top attached violet segment">
+            <div class="ui padded vertical segment m-padded-tb-large" th:each="coach:${coaches}">
+                <div class="ui middle aligned mobile reversed stackable grid">
+                    <div class="eleven wide column">
+                        <h3 class="ui header" ><span th:text="${coach.getName()}">教练</span></h3>
+                        <div class="gender">性别&colon;&nbsp;<a><b th:text="${coach.getGender()}">性别</b></a></div>
+                        <div class="description">执教经验&colon;&nbsp;<a><b th:text="${coach.getExperience()}">执教经验</b></a>年</div>
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <div class="ui mini horizontal link list">
+                                    <div class="item">
+                                        <i class="calendar icon"></i><span th:text="${#dates.format(coach.getUpdateTime(), 'yyyy-MM-dd HH:mm:ss')}">2023-4-13</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right aligned five wide column">
+                                <button class="ui violet basic label m-padded-tiny m-text-thin">资深教练</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                                        <div class="five wide column">
+                                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                                <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
+                                            </a>
+                                        </div>
+                    -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+</script>
+</body>
+</html>

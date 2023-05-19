@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments :: head(~{::title})">
+    <title>通知</title>
+</head>
+
+<body class="notice-bg">
+
+<!--导航-->
+<nav  th:replace="_fragments :: menu(3)"></nav>
+
+<!--中间内容-->
+<div  class="m-container-small m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+        <!--header-->
+        <div class="ui top attached segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui pink header">通知中心</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#lists.size(notices)}"> 4 </h2> 个
+                </div>
+            </div>
+        </div>
+
+        <div class="ui top attached pink segment">
+            <div class="ui padded vertical segment m-padded-tb-large" th:each="notice:${notices}">
+                <div class="ui middle aligned mobile reversed stackable grid">
+                    <div class="eleven wide column">
+                        <h3 class="ui header" ><a href="#" th:href="@{/notice/{id}(id=${notice.getId()})}" th:text="${notice.getTitle()}" target="_blank" class="m-black">通知标题</a></h3>
+                        <div class="m-text" th:text="${notice.getContent()}">通知内容</div>
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <div class="ui mini horizontal link list">
+                                    <div class="item">
+                                        <i class="calendar icon"></i><span th:text="${#dates.format(notice.getUpdateTime(), 'yyyy-MM-dd HH:mm:ss')}">2023-4-14</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right aligned five wide column">
+                                <button class="ui pink basic label m-padded-tiny m-text-thin">重要通知</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                                        <div class="five wide column">
+                                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                                <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
+                                            </a>
+                                        </div>
+                    -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+</script>
+</body>
+</html>
