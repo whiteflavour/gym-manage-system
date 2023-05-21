@@ -50,3 +50,29 @@ It's based on [这位大佬的博客项目](https://github.com/Mitsuha666/blog) 
 2. 运行项目
 3. 浏览器输入网址：<localhost:8080> 访问用户端
 4. 浏览器输入网址：<localhost:8080/admin> 访问管理员端
+
+# 系统效果图：
+
+## 用户端：
+
+课程浏览：
+
+![课程浏览](https://github.com/whiteflavour/gym-manage-system/raw/master/IMG/%E7%94%A8%E6%88%B7%E7%AB%AF%E8%AF%BE%E7%A8%8B%E6%B5%8F%E8%A7%88.png)
+
+在通知浏览页面点击通知标题，可以查看通知详情：
+
+![通知详情](https://github.com/whiteflavour/gym-manage-system/raw/master/IMG/%E7%94%A8%E6%88%B7%E7%AB%AF%E9%80%9A%E7%9F%A5%E8%AF%A6%E7%BB%86%E5%86%85%E5%AE%B9.png)
+
+评论浏览：
+
+![评论浏览](https://github.com/whiteflavour/gym-manage-system/raw/master/IMG/%E8%AF%84%E8%AE%BA%E6%B5%8F%E8%A7%88.png)
+
+## 管理员端：
+
+管理员登录：
+
+![管理员登录](https://github.com/whiteflavour/gym-manage-system/raw/master/IMG/%E7%AE%A1%E7%90%86%E5%91%98%E7%99%BB%E9%99%86.png)
+
+教练管理：
+
+![教练管理](https://github.com/whiteflavour/gym-manage-system/raw/master/IMG/%E6%95%99%E7%BB%83%E7%AE%A1%E7%90%86.png)
