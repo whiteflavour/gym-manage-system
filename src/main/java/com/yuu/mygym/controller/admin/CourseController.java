@@ -56,7 +56,7 @@ public class CourseController {
     public String editCourse(@PathVariable Long id, @ModelAttribute("course") Course course, RedirectAttributes attributes){  //修改
         Course c = courseService.getCourseByName(course.getCourseName());
         if(c != null){
-            attributes.addFlashAttribute("msg", "修改后与修改前结果一致");
+            attributes.addFlashAttribute("msg", "该课程已经存在");
             return "redirect:/admin/course/{id}/input";
         }else {
             attributes.addFlashAttribute("msg", "修改成功");
