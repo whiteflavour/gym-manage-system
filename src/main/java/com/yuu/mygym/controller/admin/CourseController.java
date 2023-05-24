@@ -56,8 +56,8 @@ public class CourseController {
     public String editCourse(@PathVariable Long id, @ModelAttribute("course") Course course, RedirectAttributes attributes){  //修改
         Course c = courseService.getCourseByName(course.getCourseName());
         if(c != null){
-            attributes.addFlashAttribute("msg", "不能添加重复的课程");
-            return "redirect:/admin/course/input";
+            attributes.addFlashAttribute("msg", "修改后与修改前结果一致");
+            return "redirect:/admin/course/{id}/input";
         }else {
             attributes.addFlashAttribute("msg", "修改成功");
         }
